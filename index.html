@@ -1,16 +1,800 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Petr Shpakov</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petr Shpakov — Backend / DevOps / Junior Software Engineer</title>
+  <meta name="description" content="Портфолио Petr Shpakov — junior backend / devops engineer. Проекты, стек, контакты и готовность быстро влиться в команду." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: rgba(255,255,255,0.06);
+      --card: rgba(14, 21, 43, 0.88);
+      --text: #eef2ff;
+      --muted: #a8b3cf;
+      --line: rgba(255,255,255,0.12);
+      --accent: #7c9cff;
+      --accent-2: #61e7c8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124,156,255,0.24), transparent 30%),
+        radial-gradient(circle at top right, rgba(97,231,200,0.15), transparent 25%),
+        linear-gradient(180deg, #07101f 0%, #0a1226 45%, #0c1428 100%);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 16px rgba(124,156,255,0.8);
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 10, 21, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 18px;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .glass,
+    .project,
+    .timeline-item,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(124,156,255,0.22), transparent 60%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .gradient {
+      background: linear-gradient(135deg, #ffffff, #b8c6ff 45%, #8af1dd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2.4vw, 21px);
+      max-width: 750px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      font-weight: 600;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    .btn-primary {
+      color: #08111f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .glass {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .profile-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(124,156,255,0.28), rgba(97,231,200,0.28));
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .profile-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .point {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .point strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.04em;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 660px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chip {
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dce4ff;
+      font-size: 14px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(124,156,255,0.16), transparent 32%);
+      pointer-events: none;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .project-type {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-tags span {
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .project-links a {
+      color: #dbe5ff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 20px;
+    }
+
+    .timeline-item time {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 26px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+
+    .contact-row span { color: var(--muted); }
+
+    footer {
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .accent-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,156,255,0.5), rgba(97,231,200,0.45), transparent);
+      margin: 10px 0 26px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contacts,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .glass,
+      .project,
+      .timeline-item,
+      .contact-card {
+        border-radius: 20px;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Petr Shpakov</h1>
-    <p>Backend / DevOps / Whatever you are</p>
-    <h2>Projects</h2>
-    <ul>
-        <li><a href="#">Project 1</a></li>
-        <li><a href="#">Project 2</a></li>
-    </ul>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a href="#top" class="logo">Petr <span>Shpakov</span></a>
+        <div class="nav-links">
+          <a href="#projects">Проекты</a>
+          <a href="#stack">Стек</a>
+          <a href="#about">Обо мне</a>
+          <a href="#contact">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow badge">Open to work • Junior Backend / DevOps / Software Engineer</div>
+          <h1>Я помогаю превращать <span class="gradient">идеи в работающие сервисы</span></h1>
+          <p class="lead">
+            Меня зовут Petr Shpakov. Я начинающий backend / devops инженер, который умеет быстро разбираться в новых задачах,
+            доводить проекты до рабочего состояния и писать код так, чтобы его не было страшно показывать команде.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Связаться со мной</a>
+            <a class="btn btn-secondary" href="#projects">Смотреть проекты</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>3+</strong>
+              <span>pet-проекта с реальным функционалом</span>
+            </div>
+            <div class="stat">
+              <strong>Backend</strong>
+              <span>API, базы данных, интеграции, автоматизация</span>
+            </div>
+            <div class="stat">
+              <strong>DevOps</strong>
+              <span>Docker, деплой, CI/CD, Linux, observability</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="glass">
+          <div class="profile-top">
+            <div>
+              <div class="small">Кандидат на junior / intern позиции</div>
+              <h3 style="margin:6px 0 0;font-size:28px;">Petr Shpakov</h3>
+            </div>
+            <div class="avatar">PS</div>
+          </div>
+
+          <div class="profile-points">
+            <div class="point">
+              <strong>Что вы получаете</strong>
+              <div class="small">Человека, который не ждёт идеальных условий, а разбирается и делает.</div>
+            </div>
+            <div class="point">
+              <strong>Сильная сторона</strong>
+              <div class="small">Быстрое обучение, системное мышление, аккуратная техническая подача.</div>
+            </div>
+            <div class="point">
+              <strong>Формат</strong>
+              <div class="small">Стажировка, junior full-time, remote / hybrid / office.</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="badge">Портфолио</div>
+            <h2>Проекты, которые показывают, что я умею</h2>
+          </div>
+          <p class="section-text">
+            Даже без коммерческого опыта можно показать инженерное мышление: архитектуру, понятный README,
+            деплой, API, тесты, логи, мониторинг и внятный результат.
+          </p>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-top">
+              <span class="project-type">Backend API</span>
+              <span class="chip">REST</span>
+            </div>
+            <h3>TaskFlow API</h3>
+            <p>
+              Сервис для управления задачами с JWT-авторизацией, ролями пользователей, логированием и документацией API.
+              Отлично показывает умение строить backend не «на коленке», а как нормальный продукт.
+            </p>
+            <div class="project-tags">
+              <span>Node.js / FastAPI</span>
+              <span>PostgreSQL</span>
+              <span>Docker</span>
+              <span>Swagger</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Live demo</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-type">DevOps</span>
+              <span class="chip">CI/CD</span>
+            </div>
+            <h3>Deployment Starter Kit</h3>
+            <p>
+              Готовый шаблон для деплоя приложения: Docker Compose, reverse proxy, переменные окружения,
+              GitHub Actions и базовый мониторинг. Показывает, что ты понимаешь не только код, но и доставку в production.
+            </p>
+            <div class="project-tags">
+              <span>Docker Compose</span>
+              <span>Nginx</span>
+              <span>GitHub Actions</span>
+              <span>Linux</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Case study</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-type">Automation</span>
+              <span class="chip">Python</span>
+            </div>
+            <h3>Data Parser & Reporter</h3>
+            <p>
+              Автоматизация сбора данных, обработки и формирования отчётов. Такой проект хорошо показывает практическую пользу:
+              экономию времени, работу с API, cron-задачи и аккуратную обработку ошибок.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Requests</span>
+              <span>Scheduler</span>
+              <span>CSV / JSON</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="badge">Технологии</div>
+            <h2>Стек, с которым я уже работаю</h2>
+          </div>
+          <p class="section-text">
+            Ниже пример блока, который заменяет размытое «я что-то умею» на конкретный список технологий.
+          </p>
+        </div>
+        <div class="accent-line"></div>
+        <div class="stack">
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript / TypeScript</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">FastAPI / Express</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">Redis</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Docker Compose</span>
+          <span class="chip">GitHub Actions</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Nginx</span>
+          <span class="chip">REST API</span>
+          <span class="chip">Git</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip">Testing</span>
+          <span class="chip">Monitoring basics</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="badge">Обо мне</div>
+            <h2>Почему меня стоит взять даже без опыта</h2>
+          </div>
+          <p class="section-text">
+            Компании нанимают junior не за годы в резюме, а за потенциал, адекватность, обучаемость и умение приносить пользу.
+          </p>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <time>01</time>
+            <div>
+              <h3>Я быстро учусь и умею докапываться до сути</h3>
+              <p>
+                Если задача новая, я не теряюсь: читаю документацию, разбираю примеры, тестирую гипотезы и довожу до результата.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <time>02</time>
+            <div>
+              <h3>Умею показать не только код, но и подход</h3>
+              <p>
+                Для работодателя важны структура проекта, читаемость, понятные коммиты, документация и то, как ты объясняешь решения.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <time>03</time>
+            <div>
+              <h3>Готов быть полезным команде с первого месяца</h3>
+              <p>
+                Я могу брать небольшие backend-задачи, автоматизацию, багфиксы, инфраструктурные улучшения и постепенно расти в более сложные зоны.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contacts">
+        <div class="contact-card">
+          <div class="badge">Контакты</div>
+          <h2 style="margin-top:16px;">Давайте обсудим работу</h2>
+          <p class="section-text" style="margin-top:14px;">
+            Ищу возможность начать карьеру в IT как junior backend / devops / software engineer.
+            Готов показать код, рассказать про проекты и быстро выполнить тестовое задание.
+          </p>
+          <div class="contact-list">
+            <div class="contact-row">
+              <span>Email</span>
+              <a href="mailto:petr@example.com">petr@example.com</a>
+            </div>
+            <div class="contact-row">
+              <span>GitHub</span>
+              <a href="#">github.com/your-profile</a>
+            </div>
+            <div class="contact-row">
+              <span>Telegram</span>
+              <a href="#">@your_username</a>
+            </div>
+            <div class="contact-row">
+              <span>Location</span>
+              <div>Open to remote / relocation</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="badge">Что заменить перед публикацией</div>
+          <div class="contact-list">
+            <div class="contact-row">
+              <span>Project links</span>
+              <div>Добавь реальные ссылки</div>
+            </div>
+            <div class="contact-row">
+              <span>Tech stack</span>
+              <div>Оставь только свой стек</div>
+            </div>
+            <div class="contact-row">
+              <span>Contacts</span>
+              <div>Подставь реальные данные</div>
+            </div>
+            <div class="contact-row">
+              <span>Resume PDF</span>
+              <div>Добавь кнопку на CV</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Petr Shpakov — Junior Backend / DevOps / Software Engineer
+    </div>
+  </footer>
 </body>
 </html>
