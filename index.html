@@ -90,7 +90,11 @@
       font-size: 14px;
       backdrop-filter: blur(12px);
     }
-
+    .theme-toggle {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
     .badge::before {
       content: "";
       width: 8px;
@@ -308,7 +312,7 @@
 
     .small {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 30px;
     }
 
     .profile-points {
@@ -557,7 +561,7 @@
           <a href="#stack">Стек</a>
           <a href="#about">Обо мне</a>
           <a href="#contact">Контакты</a>
-          <button class="theme-toggle" id="themeToggle" type="button">◐ Тема</button>
+          <button class="theme-toggle" id="themeToggle" type="button">Тема</button>
         </div>
       </nav>
     </div>
@@ -859,4 +863,30 @@
     </div>
   </footer>
 </body>
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light" || savedTheme === "dark") {
+    root.setAttribute("data-theme", savedTheme);
+  }
+
+  toggle.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme");
+
+    if (current === "dark") {
+      root.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    } else if (current === "light") {
+      root.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const next = prefersDark ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+  });
+</script>
 </html>
