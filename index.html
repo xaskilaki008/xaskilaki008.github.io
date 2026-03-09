@@ -26,7 +26,7 @@
       --text: #111827;
       --muted: #5b6475;
       --line: rgba(0,0,0,0.08);
-      --accent: #4f46e5;
+      --accent: #ffffff;
       --accent-2: #14b8a6;
       --shadow: 0 20px 60px rgba(0,0,0,0.12);
     }
@@ -95,21 +95,14 @@
       color: var(--text);
       border: 1px solid var(--line);
     }
-    .badge::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 16px rgba(124,156,255,0.8);
-    }
+
 
     .nav-wrap {
       position: sticky;
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
-      background: rgba(6, 10, 21, 0.55);
+      background: rgba(27, 45, 92, 0.55);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -386,13 +379,6 @@
       overflow: hidden;
     }
 
-    .project::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(124,156,255,0.16), transparent 32%);
-      pointer-events: none;
-    }
 
     .project-top {
       display: flex;
@@ -571,7 +557,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <div class="eyebrow badge">Open to work • Junior Backend / Software Engineer</div>
+          <div class="eyebrow badge">Open to work, Junior Backend / Software Engineer</div>
           <h1>Я помогаю превращать <span class="gradient">идеи в работающие сервисы</span></h1>
           <p class="lead">
             Меня зовут Petr Shpakov. Я начинающий backend инженер, который умеет быстро разбираться в новых задачах,
