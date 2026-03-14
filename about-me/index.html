@@ -84,11 +84,72 @@
     }
 
     .links {
+      display: grid;
+      gap: 22px;
+    }
+
+    .link-section {
+      text-align: left;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .section-text {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .section-list {
       list-style: none;
       padding: 0;
       margin: 0;
       display: grid;
       gap: 14px;
+    }
+
+    .business-section {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 246, 255, 0.94));
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .business-section .section-label {
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+    }
+
+    .fun-section {
+      background: linear-gradient(180deg, rgba(255, 248, 251, 0.95), rgba(255, 255, 255, 0.95));
+      border: 1px solid rgba(236, 72, 153, 0.12);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .fun-section .section-label {
+      background: rgba(236, 72, 153, 0.12);
+      color: #be185d;
     }
 
     .links a {
@@ -135,6 +196,24 @@
       border-color: transparent;
     }
 
+    .business-section .link-button {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a 58%, #2563eb);
+      box-shadow: 0 16px 32px rgba(37, 99, 235, 0.24);
+    }
+
+    .business-section .link-button:hover {
+      background: linear-gradient(135deg, #0b1120, #1b3278 58%, #1d4ed8);
+    }
+
+    .fun-section .link-button {
+      background: linear-gradient(135deg, #4c0519, #be185d 58%, #fb7185);
+      box-shadow: 0 16px 32px rgba(244, 114, 182, 0.26);
+    }
+
+    .fun-section .link-button:hover {
+      background: linear-gradient(135deg, #3b0414, #a3124c 58%, #f43f5e);
+    }
+
     .link-row .link-note {
       background: white;
       border: 1px solid rgba(15, 23, 42, 0.06);
@@ -164,6 +243,32 @@
       color: #475569;
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
       text-align: center;
+    }
+
+    .profile-tag {
+      justify-content: flex-start;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .profile-tag img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.14);
+      flex-shrink: 0;
+    }
+
+    .profile-tag span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .donate {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .donate a {
@@ -241,38 +346,58 @@
       Быстрые ссылки на мои профили и страницу для поддержки
     </p>
 
-    <ul class="links">
-      <li class="link-row">
-        <a class="link-button" href="https://t.me/xaskilaki007" target="_blank">✈️ Telegram</a>
-        <div class="link-note">Здесь можно со мной связаться до 16:00.</div>
-      </li>
-      <li class="link-row tiktok-row">
-        <a class="link-button" href="https://www.tiktok.com/@princemoves05" target="_blank">🎵 TikTok</a>
-        <div class="link-tag">@princemoves05</div>
-        <div class="link-note">Тут я снимаю забавные и интересные ролики.</div>
-      </li>
-      <li class="link-row">
-        <a class="link-button" href="https://www.tiktok.com/artstation" target="_blank">🎨 Artstation</a>
-        <div class="link-note">Здесь я публикую свои арты, дизайнерские работы и 3D.</div>
-      </li>
-      <li class="link-row">
-        <a class="link-button" href="https://www.instagram.com/petromarin/" target="_blank">📸 Instagram</a>
-        <div class="link-note">Тут я публикую красивые фотографии, творческие снимки.</div>
-      </li>
-      <li class="link-row">
-        <a class="link-button" href="https://vk.com/prestolsuda" target="_blank">💬 VK</a>
-        <div class="link-note">Моя страница для простого общения.</div>
-      </li>
-      <li class="link-row">
-        <a class="link-button" href="https://github.com/xaskilaki008" target="_blank">💻 GitHub</a>
-        <div class="link-note">Здесь разрабатываю программное обеспечение и делюсь опытом.</div>
-      </li>
-      <li class="link-row">
-        <a class="link-button" href="https://www.twitch.tv/bulisaf" target="_blank">👾🎬twitch</a>
-        <div class="link-note">Иногда стримлю когда прям вообще скучно я провожу время с друзьями там.</div>
-      </li>
-      <li class="donate"><a href="https://ko-fi.com/petyakapchauchit8" target="_blank">Поддержать деньгами</a></li>
-    </ul>
+    <div class="links">
+      <section class="link-section business-section" aria-labelledby="business-links-title">
+        <div class="section-label">Портфолио и связь</div>
+        <h2 class="section-title" id="business-links-title">Деловое</h2>
+        <p class="section-text">Площадки, где удобнее смотреть работы, код и писать по делу.</p>
+        <ul class="section-list">
+          <li class="link-row">
+            <a class="link-button" href="https://t.me/xaskilaki007" target="_blank">✈️ Telegram</a>
+            <div class="link-note">Здесь можно со мной связаться до 16:00.</div>
+          </li>
+          <li class="link-row">
+            <a class="link-button" href="https://www.tiktok.com/artstation" target="_blank">🎨 Artstation</a>
+            <div class="link-note">Здесь я публикую свои арты, дизайнерские работы и 3D.</div>
+          </li>
+          <li class="link-row">
+            <a class="link-button" href="https://github.com/xaskilaki008" target="_blank">💻 GitHub</a>
+            <div class="link-note">Здесь разрабатываю программное обеспечение и делюсь опытом.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="link-section fun-section" aria-labelledby="fun-links-title">
+        <div class="section-label">Личное и контент</div>
+        <h2 class="section-title" id="fun-links-title">Развлечение</h2>
+        <p class="section-text">Более лёгкие площадки: фото, общение, ролики и стримы.</p>
+        <ul class="section-list">
+          <li class="link-row tiktok-row">
+            <a class="link-button" href="https://www.tiktok.com/@princemoves05" target="_blank">🎵 TikTok</a>
+            <div class="link-tag">@princemoves05</div>
+            <div class="link-note">Тут я снимаю забавные и интересные ролики.</div>
+          </li>
+          <li class="link-row">
+            <a class="link-button" href="https://www.instagram.com/petromarin/" target="_blank">📸 Instagram</a>
+            <div class="link-note">Тут я публикую красивые фотографии, творческие снимки.</div>
+          </li>
+          <li class="link-row">
+            <a class="link-button" href="https://vk.com/prestolsuda" target="_blank">💬 VK</a>
+            <div class="link-note">Моя страница для простого общения.</div>
+          </li>
+          <li class="link-row tiktok-row">
+            <a class="link-button" href="https://www.twitch.tv/bulisaf" target="_blank">👾🎬 Twitch</a>
+            <div class="link-tag profile-tag">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3897276f-b4f8-450f-96d8-7eb7deb8d9d7-profile_image-70x70.png" alt="Аватар Twitch" />
+              <span>@bulisaf</span>
+            </div>
+            <div class="link-note">Иногда стримлю, когда хочется расслабиться и провести время с друзьями.</div>
+          </li>
+        </ul>
+      </section>
+
+      <div class="donate"><a href="https://ko-fi.com/petyakapchauchit8" target="_blank">Поддержать деньгами</a></div>
+    </div>
 
     <p class="home-link">
       <a href="../home-page/index.html">← На главную</a>
