@@ -1,1 +1,1 @@
-home-page/index.html
+start "" "%~dp0home-page\index.html"
