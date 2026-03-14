@@ -286,9 +286,12 @@
 
   h1 {
     margin: 0;
-    font-size: clamp(38px, 7vw, 72px);
-    line-height: 0.98;
-    letter-spacing: -0.05em;
+    font-size: clamp(34px, 5.2vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .gradient {
@@ -378,19 +381,21 @@
     justify-content: space-between;
     gap: 18px;
     align-items: flex-start;
+    min-width: 0;
   }
 
   .avatar {
     width: min(100%, 320px);
     aspect-ratio: 4 / 5;
-    flex-shrink: 0;
+    height: auto;
+    flex-shrink: 1;
     border-radius: 28px;
     overflow: hidden;
     border: 1px solid var(--line);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--text) 6%, transparent), transparent);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
     box-shadow:
-      0 30px 80px rgba(0, 0, 0, 0.18),
-      0 0 0 1px color-mix(in srgb, var(--text) 4%, transparent) inset;
+      0 30px 80px rgba(0,0,0,0.45),
+      0 0 0 1px rgba(255,255,255,0.04) inset;
     position: relative;
   }
 
