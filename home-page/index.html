@@ -492,15 +492,16 @@
 
   .projects {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
   }
 
   .project {
-    padding: 22px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    min-height: 280px;
+    min-height: 250px;
     position: relative;
     overflow: hidden;
   }
@@ -510,6 +511,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    flex-wrap: wrap;
     margin-bottom: 14px;
   }
 
@@ -522,13 +524,14 @@
 
   .project h3 {
     margin: 0 0 10px;
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .project p {
     margin: 0;
     color: var(--muted);
     flex-grow: 1;
+    max-width: 52ch;
   }
 
   .project-tags {
@@ -837,27 +840,6 @@
 
             <div class="project-links">
               <a href="https://github.com/xaskilaki008/10lb-web-developing-petya-3lb">GitHub</a>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="project-top">
-              <span class="chip">CI/CD</span>
-            </div>
-            <h3>Deployment Starter Kit</h3>
-            <p>
-              Готовый шаблон для деплоя приложения: Docker Compose, reverse proxy, переменные окружения,
-              GitHub Actions и базовый мониторинг. Показывает, что ты понимаешь не только код, но и доставку в продакшен.
-            </p>
-            <div class="project-tags">
-              <span>Docker Compose</span>
-              <span>Nginx</span>
-              <span>GitHub Actions</span>
-              <span>Linux</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/xaskilaki008">GitHub</a>
-              <a href="../about-me/index.html">Подробнее</a>
             </div>
           </article>
 
