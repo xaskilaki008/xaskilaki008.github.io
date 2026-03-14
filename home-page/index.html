@@ -178,6 +178,26 @@
     backdrop-filter: blur(12px);
   }
 
+  .section-badge {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 6px 18px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 18%, transparent),
+      color-mix(in srgb, var(--accent-2) 12%, transparent)
+    );
+    border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+    color: var(--text);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
   .theme-toggle {
     background: transparent;
     color: var(--text);
@@ -611,6 +631,26 @@
     word-break: break-word;
   }
 
+  .contact-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: var(--accent-contrast) !important;
+    font-weight: 700;
+    text-decoration: none !important;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.16);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  }
+
+  .contact-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.2);
+    filter: saturate(1.05);
+  }
+
   footer {
     padding: 22px 0 40px;
     color: var(--muted);
@@ -761,9 +801,9 @@
 
     <section id="projects">
       <div class="container">
+        <div class="badge section-badge">Портфолио</div>
         <div class="section-head">
           <div>
-            <div class="badge">Портфолио</div>
             <h2>Проекты, которые показывают, что я умею</h2>
           </div>
           <p class="section-text">
@@ -848,9 +888,9 @@
 
     <section id="stack">
       <div class="container">
+        <div class="badge section-badge">Технологии</div>
         <div class="section-head">
           <div>
-            <div class="badge">Технологии</div>
             <h2>Стек, с которым я уже работаю</h2>
           </div>
           <p class="section-text">
@@ -864,26 +904,19 @@
           <span class="chip">Node.js</span>
           <span class="chip">FastAPI / Express</span>
           <span class="chip">PostgreSQL</span>
-          <span class="chip">Redis</span>
-          <span class="chip">Docker</span>
-          <span class="chip">Docker Compose</span>
           <span class="chip">GitHub Actions</span>
           <span class="chip">Linux</span>
-          <span class="chip">Nginx</span>
           <span class="chip">REST API</span>
           <span class="chip">Git</span>
-          <span class="chip">CI/CD</span>
-          <span class="chip">Testing</span>
-          <span class="chip">Monitoring basics</span>
         </div>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
+        <div class="badge section-badge">Обо мне</div>
         <div class="section-head">
           <div>
-            <div class="badge">Обо мне</div>
             <h2>Почему меня стоит взять даже без опыта</h2>
           </div>
           <p class="section-text">
@@ -981,9 +1014,8 @@
             </div>
             <div class="contact-row">
               <span>Другие контакты</span>
-              <div><a href="../about-me/index.html"
-   style="color:#0366d6; text-decoration:none; font-weight:600;">
-   Перейти
+              <div><a class="contact-link-btn" href="../about-me/index.html">
+   Открыть About Me
 </a></div>
             </div>
             <div class="contact-row">
